@@ -7,7 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/NinjaForm', function(req, res, next) {
-  console.log(req.body);
+  console.log('contact form data.');
+  var contactFromData = req.body;
+  console.log(contactFromData);
   res.send('respond with a resource');
 });
 
