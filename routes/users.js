@@ -42,28 +42,26 @@ router.post('/NinjaForm', function(req, res, next) {
     let accessToken = body.access_token;
     console.log('access token is working',accessToken);
     var options = { method: 'POST',
-  url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
-  headers: 
-   { 'cache-control': 'no-cache',
-     Connection: 'keep-alive',
-     'Content-Length': '61',
-     'Accept-Encoding': 'gzip, deflate',
-     Host: 'api.wildapricot.org',
-     'Postman-Token': '2f53ba2e-244a-41a8-857a-ab29f2c27b2d,5fd39c14-ef1f-41c2-b9d7-ad8a12273d50',
-     'Cache-Control': 'no-cache',
-     'User-Agent': 'PostmanRuntime/7.20.1',
-     'Content-Type': 'application/x-www-form-urlencoded',
-     Authorization: 'Bearer '+accessToken,
-     Accept: 'application/json' },
-  form: 
-   { Email: contactData.Email,
-     FirstName: contactData.FirstName,
-     LastName: contactData.LastName,
-     'MembershipLevel.Id': contactData.MemberShipId,
-     MembershipEnabled : true
-
-   } 
-  };
+    url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
+    headers: 
+     { 'cache-control': 'no-cache',
+       Connection: 'keep-alive',
+       'Content-Length': '122',
+       'Accept-Encoding': 'gzip, deflate',
+       Host: 'api.wildapricot.org',
+       'Postman-Token': 'd57eb1cd-9c6a-45b7-a854-53d278dcd41d,5e362927-950a-470b-9db9-0faae98d6018',
+       'Cache-Control': 'no-cache',
+       'User-Agent': 'PostmanRuntime/7.20.1',
+       'Content-Type': 'application/x-www-form-urlencoded',
+       Authorization: 'Bearer 5ixKfwVB5xUnP-J7Lchl6-gYMAo-',
+       Accept: 'application/json' },
+    form: 
+     { Email: 'newtest5@im.com',
+       FirstName: 'first test5',
+       LastName: 'last test 5',
+       'MembershipLevel.Id': '1109926',
+       MembershipEnabled: 'true' } };
+  
 console.log('contact data is working.')
 console.log(options.form);
     request(options, function (error, response, body) {
