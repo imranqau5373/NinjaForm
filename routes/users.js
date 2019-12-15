@@ -65,7 +65,7 @@ router.post('/NinjaForm', function(req, res, next) {
    } 
   };
 console.log('contact data is working.')
-console.log(contactData);
+console.log(options.form);
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
 
