@@ -53,13 +53,13 @@ router.post('/NinjaForm', function(req, res, next) {
        'Cache-Control': 'no-cache',
        'User-Agent': 'PostmanRuntime/7.20.1',
        'Content-Type': 'application/x-www-form-urlencoded',
-       Authorization: 'Bearer 5ixKfwVB5xUnP-J7Lchl6-gYMAo-',
+       Authorization: 'Bearer '+accessToken,
        Accept: 'application/json' },
     form: 
-     { Email: 'newtest5@im.com',
-       FirstName: 'first test5',
-       LastName: 'last test 5',
-       'MembershipLevel.Id': '1109926',
+     { Email: contactData.Email,
+       FirstName: contactData.FirstName,
+       LastName: contactData.LastName,
+       'MembershipLevel.Id': contactData.MemberShipId,
        MembershipEnabled: 'true' } };
   
 console.log('contact data is working.')
