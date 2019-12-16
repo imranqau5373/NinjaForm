@@ -23,9 +23,9 @@ router.post('/NinjaForm', function(req, res, next) {
   const accountId = 307033;
   let contactData = req.body;
   if(contactData.MemberShip == "associate")
-      contactData.MemberShipId = 1109927;
+      contactData.MemberShipId = '1109927';
   else
-      contactData.MemberShipId = 1109926;
+      contactData.MemberShipId = '1109926';
   console.log(new Buffer(`APIKEY:${api_key}`).toString('base64'));
   request.post(oauthTokenUrl, {
     form: {
@@ -60,12 +60,13 @@ router.post('/NinjaForm', function(req, res, next) {
        FirstName: contactData.FirstName,
        LastName: contactData.LastName,
        'MembershipLevel.Id': contactData.MemberShipId,
-       MembershipEnabled: true } };
+       MembershipEnabled: 'true' } };
   
 console.log('contact data is working.')
 console.log(options.form);
     request(options, function (error, response, body) {
-      if (error) throw new Error(error);
+      if (error) 
+      console.log(error);
 
       console.log(body);
       console.log('after wil api requst.');
