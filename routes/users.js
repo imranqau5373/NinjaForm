@@ -23,9 +23,9 @@ router.post('/NinjaForm', function(req, res, next) {
   const accountId = 307033;
   let contactData = req.body;
   if(contactData.MemberShip == "associate")
-      contactData.MemberShipId = "1109927";
+      contactData.MemberShipId = 1109927;
   else
-      contactData.MemberShipId = "1109926";
+      contactData.MemberShipId = 1109926;
   console.log(new Buffer(`APIKEY:${api_key}`).toString('base64'));
   request.post(oauthTokenUrl, {
     form: {
