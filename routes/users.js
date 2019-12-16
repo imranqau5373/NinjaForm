@@ -97,6 +97,7 @@ console.log(options.form);
 
       console.log(body);
       console.log('after wil api requst.');
+      console.log(response);
       res.json('It is working now.');
     });
   })
