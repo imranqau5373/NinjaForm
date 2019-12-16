@@ -82,9 +82,9 @@ router.post('/NinjaForm', function(req, res, next) {
        Accept: 'application/json' },
     form: 
      { 
-        Email: 'newassociate4@im.com',
-        FirstName: 'associte4',
-        LastName: 'lastassociate4',
+        Email: contactData.Email,
+        FirstName: contactData.FirstName,
+        LastName: contactData.LastName,
         'MembershipLevel.Id': 1109926,
         MembershipEnabled: true 
     } };
