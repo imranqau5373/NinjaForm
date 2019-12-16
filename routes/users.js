@@ -9,9 +9,34 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/TestForm', function(req, res, next) {
-  console.log(req.body);
-  res.json('it is working.')
+router.get('/TestForm', function(req, res, next) {
+  var options = { method: 'POST',
+  url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
+  headers: 
+   { 'cache-control': 'no-cache',
+     Connection: 'keep-alive',
+     'Content-Length': '72',
+     'Accept-Encoding': 'gzip, deflate',
+     Host: 'api.wildapricot.org',
+     'Postman-Token': '454a8e75-ad75-4e3c-9943-99c9c5928b5c,9b99ddf4-af7f-4432-a9c6-8299f56cff91',
+     'Cache-Control': 'no-cache',
+     'User-Agent': 'PostmanRuntime/7.20.1',
+     'Content-Type': 'application/x-www-form-urlencoded',
+     Authorization: 'Bearer r8troz-a7GsXsw7bTKfHXH-gKMI-',
+     Accept: 'application/json' },
+  form: 
+   { Email: 'newassociate3@im.com',
+     FirstName: 'associte3',
+     LastName: 'lastassociate3',
+     'MembershipLevel.Id': 1109926,
+     MembershipEnabled: true } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+  res.json(response);
+});
 
 });
 
@@ -56,11 +81,12 @@ router.post('/NinjaForm', function(req, res, next) {
        Authorization: 'Bearer '+accessToken,
        Accept: 'application/json' },
     form: 
-     { Email: contactData.Email,
-       FirstName: contactData.FirstName,
-       LastName: contactData.LastName,
-      //  'MembershipLevel.Id': contactData.MemberShipId,
-      //  MembershipEnabled: 'true' 
+     { 
+        Email: 'newassociate4@im.com',
+        FirstName: 'associte4',
+        LastName: 'lastassociate4',
+        'MembershipLevel.Id': 1109926,
+        MembershipEnabled: true 
     } };
   
 console.log('contact data is working.')
