@@ -60,7 +60,7 @@ router.post('/NinjaForm', function(req, res, next) {
        FirstName: contactData.FirstName,
        LastName: contactData.LastName,
        'MembershipLevel.Id': contactData.MemberShipId,
-       MembershipEnabled: 'true' } };
+       MembershipEnabled: true } };
   
 console.log('contact data is working.')
 console.log(options.form);
