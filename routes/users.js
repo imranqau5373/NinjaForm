@@ -112,7 +112,7 @@ router.post('/NinjaForm', function(req, res, next) {
        Host: 'api.wildapricot.org',
        'content-type': 'application/x-www-form-urlencoded',
        'Accept': 'application/json',
-       Authorization: 'Bearer '+accessToken,
+       Authorization: 'Bearer '+wilres.body.access_token,
         },
     form: 
      { 
