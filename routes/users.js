@@ -116,9 +116,9 @@ router.post('/NinjaForm', function(req, res, next) {
         },
     form: 
      { 
-      Email: 'newassociate6@im.com',
-      FirstName: 'associte6',
-      LastName: 'lastassociate6',
+      Email: contactData.Email,
+      FirstName: contactData.FirstName,
+      LastName: contactData.LastName,
         // 'MembershipLevel.Id': 1109926,
         // MembershipEnabled: true 
     } };
@@ -126,7 +126,7 @@ router.post('/NinjaForm', function(req, res, next) {
       if (error) 
       console.log(error);
 
-      console.log(body);
+      console.log(response);
       console.log('after wil api requst.');
       res.json(response);
     });
