@@ -51,8 +51,9 @@ router.get('/contact', function(req, res, next) {
 });
 
 router.post('/TestForm', function(req, res, next) {
+  console.log(req.body);
   var options = { method: 'POST',
-  url: 'https://api.wildapricot.org/v2/accounts/308042/Contacts/',
+  url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
   headers: 
    { 'cache-control': 'no-cache',
      Connection: 'keep-alive',
@@ -64,11 +65,14 @@ router.post('/TestForm', function(req, res, next) {
      Accept: 'application/json',
      'User-Agent': 'PostmanRuntime/7.20.1',
      'Content-Type': 'application/x-www-form-urlencoded',
-     Authorization: 'Bearer hIMDUh2h230abr2id7KD99UUiuY-' },
+     Authorization: 'Bearer JWjfkMItKqdpp5wL--bEwQX55SE-' },
   form: 
    { Email: req.body.Email,
      FirstName: req.body.FirstName,
-     LastName: req.body.LastName } };
+     LastName: req.body.LastName,
+     'MembershipLevel.Id': 1109926,
+     MembershipEnabled: true 
+    } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -82,7 +86,7 @@ request(options, function (error, response, body) {
 router.post('/NinjaForm', function(req, res, next) {
   const oauthTokenUrl = 'https://oauth.wildapricot.org/auth/token';
   
-  const api_key = 'g9npihh79dei9ebpf3v1siictiqo7q';
+  const api_key = '7sa44nulzkbzljll8u182s89xioka5';
   const accountId = 307033;
   let contactData = req.body;
   console.log(contactData);
@@ -102,35 +106,10 @@ router.post('/NinjaForm', function(req, res, next) {
      },
     json: true
   }, function (err, wilres, body) {
-    var options = { method: 'POST',
-    url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
-    headers: 
-     { 'cache-control': 'no-cache',
-       Connection: 'keep-alive',
-       'Content-Length': '122',
-       'Accept-Encoding': 'gzip, deflate',
-       Host: 'api.wildapricot.org',
-       'content-type': 'application/x-www-form-urlencoded',
-       'Accept': 'application/json',
-       Authorization: 'Bearer '+wilres.body.access_token,
-        },
-    form: 
-     { 
-      Email: contactData.Email,
-      FirstName: contactData.FirstName,
-      LastName: contactData.LastName,
-        // 'MembershipLevel.Id': 1109926,
-        // MembershipEnabled: true 
-    } };
-    request(options, function (error, response, body) {
-      if (error) 
-      console.log(error);
+    console.log(wilres);
+    res.json(body);
 
-      console.log(response);
-      console.log('after wil api requst.');
-      res.json(response);
-    });
-  })
+  });
 
 });
 
