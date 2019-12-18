@@ -4,8 +4,12 @@ var request = require("request");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log(req.body);
-  res.json('it is working.')
+  req.body.Email = 'testza1@im.com';
+  req.body.FirstName = 'testza1';
+  req.body.LastName = 'testza1';
+  req.body.access_token = 'IrV-BH7-R-zLHtlbk-WWPOdJlbE-';
+  callSaveContact(req);
+  res.json('it is working.');
 
 });
 
@@ -18,11 +22,11 @@ router.post('/Test', function(req, res, next) {
 
 });
 
-router.post('/contact', function(req, res, next) {
+router.get('/contact', function(req, res, next) {
   const oauthTokenUrl = 'https://oauth.wildapricot.org/auth/token';
   
-  const api_key = '7sa44nulzkbzljll8u182s89xioka5';
-  const accountId = 307033;
+  const api_key = 'g9npihh79dei9ebpf3v1siictiqo7q';
+  const accountId = 308042;
   request.post(oauthTokenUrl, {
     form: {
       grant_type: 'client_credentials',
@@ -36,9 +40,9 @@ router.post('/contact', function(req, res, next) {
     json: true
   }, function (err, wilres, body) {
     console.log(body);
-    wilres.body.Email = 'zap2@im.com';
-    wilres.body.FirstName = 'imran';
-    wilres.body.LastName = 'khan';
+    wilres.body.Email = 'testza1@im.com';
+    wilres.body.FirstName = 'testza1';
+    wilres.body.LastName = 'testza1';
     callSaveContact(wilres);
     res.json(wilres.body.access_token);
 
@@ -47,42 +51,38 @@ router.post('/contact', function(req, res, next) {
 });
 
 router.post('/TestForm', function(req, res, next) {
-  console.log(req.body.Email);
-
-var options = { method: 'POST',
-  url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
+  var options = { method: 'POST',
+  url: 'https://api.wildapricot.org/v2/accounts/308042/Contacts/',
   headers: 
    { 'cache-control': 'no-cache',
      Connection: 'keep-alive',
-     'Content-Length': '122',
+     'Content-Length': '53',
      'Accept-Encoding': 'gzip, deflate',
      Host: 'api.wildapricot.org',
-     'Postman-Token': '5160c8c7-f722-4e90-a1e6-7ece695402ba,5942c5f0-b476-45c5-8ac1-2eafbc45b646',
+     'Postman-Token': '18985b66-d8ed-441e-b360-627faa79cec9,83f2279b-548f-483f-9972-8b1298eceb29',
      'Cache-Control': 'no-cache',
+     Accept: 'application/json',
      'User-Agent': 'PostmanRuntime/7.20.1',
      'Content-Type': 'application/x-www-form-urlencoded',
-     "Authorization": 'Bearer fETt5CIAPtpZUGwOBt3xjBrzrck-',
-     'Accept': 'application/json' },
+     Authorization: 'Bearer hIMDUh2h230abr2id7KD99UUiuY-' },
   form: 
-   { Email: `${req.body.Email}`,
-     FirstName: 'associte6',
-     LastName: 'lastassociate6'
-    } };
-
+   { Email: req.body.Email,
+     FirstName: req.body.FirstName,
+     LastName: req.body.LastName } };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log(body);
   console.log(response);
   res.json(body);
 });
 });
 
+
 router.post('/NinjaForm', function(req, res, next) {
   const oauthTokenUrl = 'https://oauth.wildapricot.org/auth/token';
   
-  const api_key = '7sa44nulzkbzljll8u182s89xioka5';
+  const api_key = 'g9npihh79dei9ebpf3v1siictiqo7q';
   const accountId = 307033;
   let contactData = req.body;
   console.log(contactData);
@@ -131,6 +131,7 @@ router.post('/NinjaForm', function(req, res, next) {
       res.json(response);
     });
   })
+
 });
 
 function callSaveContact(req){
