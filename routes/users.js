@@ -87,9 +87,8 @@ router.post('/NinjaForm', function(req, res, next) {
   const oauthTokenUrl = 'https://oauth.wildapricot.org/auth/token';
   
   const api_key = '7sa44nulzkbzljll8u182s89xioka5';
-  const accountId = 307033;
   let contactData = req.body;
-  console.log(contactData);
+  console.log(contactData.Email);
   if(contactData.MemberShip == "associate")
       contactData.MemberShipId = '1109927';
   else
@@ -106,16 +105,23 @@ router.post('/NinjaForm', function(req, res, next) {
      },
     json: true
   }, function (err, wilres, body) {
-    console.log(wilres);
+    
+    contactData.access_token = body.access_token;
+    callSaveContact(contactData);
+    setTimeout(sayHi, 10000);
     res.json(body);
-
   });
 
 });
 
-function callSaveContact(req){
-  let tokenNew = req.body.access_token;
-  console.log(req.body.Email);
+function sayHi() {
+  console.log('Hello');
+}
+
+function callSaveContact(req) {
+  console.log('in call save contact.');
+  let tokenNew = req.access_token;
+  console.log(req.Email);
   console.log(tokenNew);
   var options = { method: 'POST',
   url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
@@ -133,13 +139,14 @@ function callSaveContact(req){
      Accept: 'application/json' },
   form:
    {
-     Email: req.body.Email,
-     FirstName: 'associte6',
-     LastName: 'lastassociate6'
+     Email: req.Email,
+     FirstName: req.FirstName,
+     LastName: req.LastName
    }
    };
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
+  console.log('save contact response');
   console.log(body);
   });
 }
