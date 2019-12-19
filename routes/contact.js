@@ -3,9 +3,14 @@ var router = express.Router();
 var request = require("request");
 var fs = require('fs');
 
+function sayHi() {
+    console.log('Hello');
+  }
+
 /* GET users listing. */
 router.post('/addcontact', function(req, res, next) {
     fs.readFile('token.txt', 'utf8', function(err, token) {
+        setTimeout(sayHi, 10000);
         var options = { method: 'POST',
         url: 'https://api.wildapricot.org/v2/accounts/307033/Contacts/',
         headers:
